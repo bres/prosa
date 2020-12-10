@@ -1,0 +1,36 @@
+{% extends "blog/base.html"  %}
+{% load static %}
+{% block content %}
+
+<!-- header section -->
+<section class="mx-20">
+
+
+<div class="flex flex-col ">
+  <div class="w-full mt-20">
+      <p class="text-5xl font-extrabold text-black text-center">
+            Ή ελεύθερη πεζογραφία στο διαδίκτυο
+      </p>
+  </div>
+  <div class="max-w-3xl mx-auto mt-10">
+<img src="{% static 'images/group.png' %}">
+  </div>
+
+  <div class="max-w-xl mx-auto mt-6 text-center leading-relaxed tracking-wide">
+<p class="text-lg text-gray-800 ">
+    " Ό ιστοχώρος απευθύνεται σε ερασιτέχνες συγγραφείς όπως και αναγνώστες που αγαπούν την ελληνική πεζογραφία. "</p>
+  </div>
+
+
+    <div class="max-w-lg mx-auto mt-10">
+      <p class="text-lg font-semibold text-white text-center bg-red-500 shadow-xl rounded-lg px-5 py-4">
+           Μάθε περισσότερα
+      </p>
+  </div>
+</div>
+
+
+
+
+</section>
+{% endblock content %}

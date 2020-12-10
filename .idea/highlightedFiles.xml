@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectTreeColorHighlighter">
+    <files>
+      <node color="9" path="$PROJECT_DIR$/prosa/blog" />
+      <node color="10" path="$PROJECT_DIR$/prosa/prosa" />
+    </files>
+    <colors>
+      <color name="Color 1" value="#4f060d" enabled="true" />
+      <color name="Color 2" value="#44220e" enabled="true" />
+      <color name="Color 3" value="#3f371b" enabled="true" />
+      <color name="Color 4" value="#162c16" enabled="true" />
+      <color name="Color 5" value="#0f2f47" />
+      <color name="Color 6" value="#171a34" />
+      <color name="Color 7" value="#311333" />
+      <color name="Color 8" value="#1e1e1e" />
+      <color name="Color 9" value="#d5fba8" enabled="true" />
+      <color name="Color 10" value="#fbd1d1" enabled="true" />
+    </colors>
+  </component>
+</project>
