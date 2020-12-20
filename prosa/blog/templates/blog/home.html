@@ -3,57 +3,95 @@
 {% block content %}
 
 <!-- header section -->
-<section class="mx-20">
-
+<section class="mx-32">
 
 <div class="flex flex-col ">
   <div class="w-full mt-20">
-      <p class="text-5xl font-extrabold text-black text-center">
+      <p class="text-5xl font-semibold text-black text-center">
             Ή ελεύθερη πεζογραφία στο διαδίκτυο
       </p>
   </div>
-  <div class="max-w-3xl mx-auto mt-10">
+  <div class="max-w-xl mx-auto mt-16">
 <img src="{% static 'images/group.png' %}">
   </div>
 
-  <div class="max-w-xl mx-auto mt-6 text-center leading-relaxed tracking-wide">
-<p class="text-lg text-gray-800 ">
+  <div class="max-w-xl mx-auto mt-14 text-center leading-relaxed tracking-wide">
+<p class="text-lg text-gray-900 ">
     " Ό ιστοχώρος απευθύνεται σε ερασιτέχνες συγγραφείς όπως και αναγνώστες που αγαπούν την ελληνική πεζογραφία. "</p>
   </div>
 
+    <div class="max-w-lg mx-auto mt-14">
+          <a href="#" class="text-lg font-semibold text-white text-center bg-red-500 hover:bg-red-600 shadow-xl rounded-lg px-5 py-4">
+            <span>Μάθε περισσότερα </span>
+          </a>
 
-    <div class="max-w-lg mx-auto mt-10">
-      <p class="text-lg font-semibold text-white text-center bg-red-500 shadow-xl rounded-lg px-5 py-4">
-           Μάθε περισσότερα
-      </p>
   </div>
 </div>
 
 </section>
 
 <!-- how_to section -->
-<section class=" bg-gray-200 mt-10 ">
-
-<div class="h-48 flex flex-column   justify-evenly content-center">
+<section class="bg-gray-200 mt-24">
+    <p class="text-5xl font-semibold text-center pt-10">Πώς δουλεύει</p>
+<div class="h-48 flex flex-col lg:flex-row justify-evenly items-center mx-32">
   <div>
-  <p>Μπες στην ομάδα κάνωντας εγγραφή</p>
+    <p class="px-4">Μπες στην ομάδα κάνωντας εγγραφή</p>
   </div>
   <div>
-    <p>Ανέβασε το πεζογράφημα σου</p>
+    <p class="px-4">Ανέβασε το πεζογράφημα σου</p>
   </div>
   <div>
-        <p>Ψήφισε το ωραιότερο</p>
-
+      <p class="px-4">Ψήφισε το ωραιότερο</p>
   </div>
   <div>
-        <p>Δες το πεζογράφημα σου σε έντυπη μορφή</p>
-
+     <p class="px-4">Δες το πεζογράφημα σου σε έντυπη μορφή</p>
   </div>
 </div>
 </section>
 
+<!-- what you do-->
+<section class="bg-green-200 ">
+        <p class="text-5xl font-semibold text-center pt-10 ">Πώς δουλεύει</p>
 
 
+        <div class="flex flex-col lg:flex-row sm:justify-evenly md:items-center mt-16 mx-20 md:mx-32 bg-red-300">
+
+                 <div class=" max-w-lg ">
+                    <img class="object-cover" src="{% static 'images/group.png' %}">
+                </div>
+                <div class="max-w-lg text-justify md:text-left">
+                    <p>Βρες το ιδανικό κοινό για τα πεζογραφήματα σου .
+                        Αντάλλαξε απόψεις με άλλος ερασιτέχνες συγγραφείς.
+                        Παρε μερος σε διαγωνισμους ωστε να δεις το εργο σου να εκδιδεται σε εντυπη μορφη.
+                    </p>
+               </div>
+        </div>
+
+  <div class="flex flex-col lg:flex-row sm:justify-evenly md:items-center mt-16 mx-20 md:mx-32 bg-red-400">
+
+                 <div class=" max-w-lg text-justify md:text-left">
+                    <p>Βρες το ιδανικό κοινό για τα πεζογραφήματα σου .
+                        Αντάλλαξε απόψεις με άλλος ερασιτέχνες συγγραφείς.
+                        Παρε μερος σε διαγωνισμους ωστε να δεις το εργο σου να εκδιδεται σε εντυπη μορφη.
+                    </p>
+               </div>
+       <div class=" max-w-lg ">
+                    <img class="object-cover" src="{% static 'images/group.png' %}">
+                </div>
+        </div>
 
 
+     <div class="flex flex-col lg:flex-row sm:justify-evenly md:items-center mt-16 mx-20 md:mx-32 bg-red-300">
+
+                 <div class=" max-w-lg ">
+                    <img class="object-cover" src="{% static 'images/group.png' %}">
+                </div>
+                <div class="max-w-lg text-justify md:text-left">
+                    <p>Βρες το ιδανικό κοινό για τα πεζογραφήματα σου .
+                        Αντάλλαξε απόψεις με άλλος ερασιτέχνες συγγραφείς.
+                        Παρε μερος σε διαγωνισμους ωστε να δεις το εργο σου να εκδιδεται σε εντυπη μορφη.
+                    </p>
+               </div>
+        </div>
+</section>
 {% endblock content %}
