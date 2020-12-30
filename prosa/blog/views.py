@@ -1,9 +1,21 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from .models import Posts
+
+
+
+
 
 # Create your views here.
 def home(request):
+
     return render(request,'blog/home.html')
 
+
+def articles_list(request):
+    articles=Posts.objects.all().order_by('date')
+    return render(request,'blog/articles.html',{'articles':articles } )
+
 def about(request):
-    return HttpResponse('<h1>Blog about</h1>')
+
+    return render(request,'blog/about.html')
+

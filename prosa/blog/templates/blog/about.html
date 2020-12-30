@@ -1,0 +1,13 @@
+{% extends "blog/base.html"  %}
+{% load static %}
+{% block content %}
+
+
+{% for post in posts %}
+  {{ post.author}}
+  {{ post.title}}
+  {{ post.content}}
+  {{ post.date_posted}}
+{% endfor %}
+
+{% endblock  %}
