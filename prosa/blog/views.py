@@ -11,9 +11,9 @@ def home(request):
     return render(request,'blog/home.html')
 
 
-def articles_list(request):
-    articles=Posts.objects.all().order_by('date')
-    return render(request,'blog/articles.html',{'articles':articles } )
+def posts_list(request):
+    posts=Posts.objects.all()
+    return render(request,'blog/posts.html',{'posts':posts } )
 
 def about(request):
 

@@ -1,0 +1,70 @@
+{% extends "blog/base.html"  %}
+{% load static %}
+{% block content %}
+
+
+<!-- header section -->
+<section class=" container mx-auto">
+<div class="md:mx-32 bg-gray-700 h-56">
+ <p class="text-white text-5xl mx-20 text-center py-20">
+Τα πεζογραφήματα
+</p>
+ </div>
+</section>
+
+<section class="container mx-auto">
+<div class="flex md:mx-32 mt-12 ">
+<div class="w-3/4 ">
+<p class="text-lg text-gray-400 ">
+<span class="text-gray-900">Νεότερα</span>
+<span class="font-medium">/</span>
+<span class="">Παλαιότερα</span>
+<span class="font-medium">/</span>
+<span class="">Δημοφιλέστερα</span>
+</p>
+{% for post in posts %}
+<!-- component -->
+<div class=" mx-auto mt-20 mb-10 pr-8">
+<div class="flex justify-between items-center">
+<span class="text-xl text-gray-900"> {{post.title}}</span>
+<ul class="flex  justify-between items-center">
+<!-- <li class="text-sm text-red-500 ml-4 hover:text-gray-800 font-mono">
+<a href="">update</a>
+</li>
+<span class="text-black mx-2"> </span>
+<li class="text-sm text-red-500  hover:text-gray-800 font-mono">
+<a href="">delete</a>
+</li> -->
+</ul>
+</div>
+<p class="text-gray-600  mb-3">Written by
+    <span class="text-gray-700 cursor-pointer hover:underline text-md">{{ post.author }}</span>
+    on
+</p>
+<p class="text-gray-600  text-justify tracking-wider mb-6 leading-loose">{{ post.content }}</p>
+</div>
+{% endfor %}
+</div>
+<div class="w-1/4 border-l-2 border-gray-200 px-4">
+<div class="">
+<h1 class="text-lg underline text-gray-600 ">Θεματολογία του μήνα</h1>
+<p class="text-sm text-gray-600 mt-6">Για τον μήνα ------ η θεματολογία είναι Φαντασίας</p>
+</div>
+<div class="pt-6">
+<h1 class="text-lg underline text-gray-600 mb-6">Οι δημοφιλέστερες αναρτήσεις</h1>
+<ul class="text-sm text-gray-600">
+<li>ΑΥΓΟΥΣΤΟΣ 2020</li>
+<li>ΣΕΠΤΕΜΒΡΙΟΣ 2020</li>
+<li>ΟΚΤΩΜΒΡΙΟΣ 2020</li>
+</ul>
+</div>
+</div>
+</div>
+
+</section>
+
+
+
+
+
+{% endblock %}
