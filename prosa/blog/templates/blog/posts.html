@@ -5,7 +5,7 @@
 
 <!-- header section -->
 <section class=" container mx-auto">
-<div class="md:mx-32 bg-gray-700 h-56">
+<div class="md:mx-40 bg-gray-700 h-56">
  <p class="text-white text-5xl mx-20 text-center py-20">
 Τα πεζογραφήματα
 </p>
@@ -13,7 +13,7 @@
 </section>
 
 <section class="container mx-auto">
-<div class="flex md:mx-32 mt-12 ">
+<div class="flex md:mx-40 mt-12 ">
 <div class="w-3/4 ">
 <p class="text-lg text-gray-400 ">
 <span class="text-gray-900">Νεότερα</span>
@@ -37,21 +37,23 @@
 </li> -->
 </ul>
 </div>
-<p class="text-gray-600  mb-3">Written by
+<p class="text-gray-700  mb-3">Written by
     <span class="text-gray-700 cursor-pointer hover:underline text-md">{{ post.author }}</span>
     on
 </p>
-<p class="text-gray-600  text-justify tracking-wider mb-6 leading-loose">{{ post.content }}</p>
+<p class="text-gray-700  text-justify tracking-wider mb-6 leading-loose">{{ post.excerpt }}</p>
+    <p class="text-gray-600  text-justify tracking-wider mb-6 leading-loose"><a href="{{ post.get_absolute_url }}">Read more</a></p>
+
 </div>
 {% endfor %}
 </div>
 <div class="w-1/4 border-l-2 border-gray-200 px-4">
 <div class="">
-<h1 class="text-lg underline text-gray-600 ">Θεματολογία του μήνα</h1>
+<h1 class="text-lg underline text-gray-700 ">Θεματολογία του μήνα</h1>
 <p class="text-sm text-gray-600 mt-6">Για τον μήνα ------ η θεματολογία είναι Φαντασίας</p>
 </div>
 <div class="pt-6">
-<h1 class="text-lg underline text-gray-600 mb-6">Οι δημοφιλέστερες αναρτήσεις</h1>
+<h1 class="text-lg underline text-gray-700 mb-6">Οι δημοφιλέστερες αναρτήσεις</h1>
 <ul class="text-sm text-gray-600">
 <li>ΑΥΓΟΥΣΤΟΣ 2020</li>
 <li>ΣΕΠΤΕΜΒΡΙΟΣ 2020</li>

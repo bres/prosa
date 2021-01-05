@@ -1,21 +1,31 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from django.urls import reverse
 
 # Create your models here.
 class Posts(models.Model):
+
+    class NewManager(models.Manager):
+        def get_queryset(self):
+            return super().get_queryset().filter(status='published')
 
     options = (
         ('draft','Draft'),
         ('published','Published'),
                )
     title=models.CharField(max_length=150)
+    excerpt=models.TextField(max_length=500,null=True)
     slug =models.SlugField(max_length=250,unique_for_date='publish_date')
     publish_date =models.DateTimeField(default=timezone.now)
     author=models.ForeignKey(User,on_delete=models.CASCADE,related_name='blog_posts')
-    content =models.TextField(max_length=2000)
+    content =models.TextField(max_length=5000)
     status=models.CharField(max_length=10,choices=options,default='draft')
     #add in thumbnail
+    newmanager=NewManager() # custom manager
+
+    def get_absolute_url(self):
+        return reverse('blog:post_single',args=[self.slug])
     class Meta:
         ordering=('-publish_date',)
 
