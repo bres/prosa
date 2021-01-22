@@ -14,9 +14,6 @@ def signup_view(request):
 		form=UserCreationForm()
 	return render(request,'accounts/signup.html',{'form':form})
 
-
-
-
 def login_view(request):
     if request.method=='POST':
         form=AuthenticationForm(data=request.POST)
@@ -24,8 +21,17 @@ def login_view(request):
             #log user
             user =form.get_user()
             login(request,user)
-            return redirect('blog:posts_list')
+            if 'next' in request.POST:
+                return redirect(request.POST.get('next'))
+            else:
+                return redirect('blog:home')
 
     else:
         form=AuthenticationForm()
     return render(request,'accounts/login.html',{'form':form })
+
+def logout_view(request):
+	if request.method=='POST':
+		logout(request)
+		return redirect('blog:posts_list')
+ 

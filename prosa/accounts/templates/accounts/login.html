@@ -28,7 +28,7 @@
             <div class="flex justify-center md:justify-start pt-12 container mx-auto ">
             <a href="{% url 'blog:home' %}" class="">
                     <span class="text-xl text-gray-700 font-bold uppercase tracking-wide mx-40">greekprosa </span>
-            </a>       
+            </a>
              </div>
 
             <div class="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-40">
@@ -37,18 +37,21 @@
                 {% csrf_token %}
 
                     {{ form }}
+                    {% if request.GET.next %}
+                    <input type="hidden" name="next" value="{{ request.GET.next }}">
+                    {% endif %}
 
-<!--
-                    <div class="flex flex-col pt-4">
-                        <label for="email" class="text-lg">Email</label> 
+
+            <!--        <div class="flex flex-col pt-4">
+                        <label for="email" class="text-lg">Email</label>
                         <input type="email" id="email" placeholder="your@email.com" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">
                     </div>
-    
+
                     <div class="flex flex-col pt-4">
                         <label for="password" class="text-lg">Password</label>
                         <input type="password" id="password" placeholder="Password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">
-                    </div>
-    -->
+                    </div> -->
+
                     <input type="submit" value="Login" class="bg-black text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8">
                 </form>
                 <div class="text-center pt-12 pb-12">
@@ -58,7 +61,7 @@
 
         </div>
 
-    
+
 
         <!-- Image Section -->
         <div class="w-1/2 shadow-2xl">
