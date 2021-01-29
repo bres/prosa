@@ -5,11 +5,11 @@
 
 <section class="container mx-auto">
   <div class="mx-40">
-<p class="">create a new article </p>
+<p class="">update an article </p>
 
-  <form action="{% url 'blog:post_create' %}" method="post">
+  <form  method="post">
   {% csrf_token %}
-   {{ form}}
+   {{ form }}
    <input type="submit" value="Create">
     </form>
 

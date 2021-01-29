@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tailwind Login Template</title>
+    <title>
+      {% block title %} Login {% endblock %}
+    </title>
     <meta name="author" content="David Grzyb">
     <meta name="description" content="">
 
@@ -23,7 +25,7 @@
     <div class="w-full flex flex-wrap">
 
         <!-- Login Section -->
-        <div class="w-full md:w-1/2 flex flex-col">
+        <div class="w-full md:w-2/5 flex flex-col">
 
             <div class="flex justify-center md:justify-start pt-12 container mx-auto ">
             <a href="{% url 'blog:home' %}" class="">
@@ -64,7 +66,7 @@
 
 
         <!-- Image Section -->
-        <div class="w-1/2 shadow-2xl">
+        <div class="w-3/5 shadow-2xl">
             <img class="object-cover w-full h-screen hidden md:block" src="https://images.unsplash.com/photo-1577382976698-d759a2e5fa87?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80">
         </div>
     </div>

@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>The HTML5 Herald</title>
+  <title>{% block title %} Welcome to free prosa {% endblock %}</title>
   <meta name="description" content="The HTML5 Herald">
   <meta name="author" content="SitePoint">
   <link href="../static/css/public/styles.css" rel="stylesheet">
@@ -47,16 +47,24 @@
                     <a href="#" class="lg:inline-flex lg:w-auto w-full px-3 py-1 rounded text-gray-900 items-center justify-center hover:underline hover:text-red-600">
                     <span>Όροι</span>
                     </a>
+
+                    {% if not user.is_authenticated %}
                     <a href="{% url 'accounts:signup' %}" class="lg:inline-flex lg:w-auto lg:ml-6 px-3 py-2 rounded text-white font-semibold items-center justify-center border border-red-600 bg-red-600 hover:bg-red-700  ">
                     <span>Γίνε Μέλος</span>
                     </a>
                     <a href="{% url 'accounts:login' %}" class="lg:inline-flex lg:w-auto  mt-2 lg:ml-3 lg:mt-0 px-3 py-2 rounded text-red-600  font-semibold items-center justify-center border border-red-900 hover:bg-gray-50 ">
                     <span>Είσοδος</span>
                     </a>
+                    {% else %}
+                    <a href="{% url 'blog:post_create' %}" class="lg:inline-flex lg:w-auto w-full px-3 py-1 rounded text-gray-900 items-center justify-center hover:underline hover:text-red-600">
+                    <span>Δημιούργησε</span>
+                    </a>
                     <form class="px-2" action="{% url 'accounts:logout' %}" method="post">
                       {% csrf_token %}
                       <button type="submit">Logout</button>
                     </form>
+                    {% endif %}
+
                 </div>
             </div>
         </nav>
