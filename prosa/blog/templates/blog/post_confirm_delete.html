@@ -5,13 +5,18 @@
 {% block content %}
 <section class="container mx-auto ">
     <div class="mx-40">  
+       
+
+        <h1>Post Confirm Delete</h1>
+
         <form method="post">{% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" value="Save">
+            <p>Are you sure you want to delete "{{ post }}"?</p>
+            <input type="submit" value="Confirm">
         </form>
         
-
-this is the create page
+        <p>
+            <a href="{% url 'blog:post_detail' post.slug %}">Cancel</a>
+        </p>
 
 </div>
 

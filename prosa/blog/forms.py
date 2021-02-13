@@ -1,8 +1,13 @@
 from django import forms
-from .import models
 
+from .models import Posts
 
-class CreatePost(forms.ModelForm):
+class PostForm(forms.ModelForm):
+
     class Meta:
-         model=models.Posts
-         fields=['title','slug','content','excerpt','status']
+        model = Posts
+        fields = ('title', 'slug','content','excerpt','status')
+
+
+
+

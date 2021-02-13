@@ -25,7 +25,7 @@ class Posts(models.Model):
     newmanager=NewManager() # custom manager
 
     def get_absolute_url(self):
-        return reverse('blog:post_single',args=[self.slug])
+        return reverse('blog:post_detail',args=[self.slug])
     class Meta:
         ordering=('-publish_date',)
 
