@@ -7,7 +7,7 @@
   <meta name="description" content="The HTML5 Herald">
   <meta name="author" content="SitePoint">
   <link href="../static/css/public/styles.css" rel="stylesheet">
-
+{% load tailwind_filters %}
 <style>
 /* navigation
  - show navigation always on the large screen devices with (min-width:1024)
@@ -26,7 +26,7 @@
 <!-- navmenu -->
 <section class="pt-14">
     <div class="container mx-auto">
-        <nav class="flex items-center flex-wrap  mx-40  border-b border-gray-200 pb-4 ">
+        <nav class="flex items-center flex-wrap  mx-4 lg:mx-40  border-b border-gray-200 pb-4 ">
         <a href="{% url 'blog:home' %}" class="mr-4 inline-flex items-center">
         <span class="text-2xl text-gray-900 font-semibold uppercase tracking-wide">Freeprosa </span>
         </a>

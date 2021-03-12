@@ -1,12 +1,13 @@
 {% extends "blog/base.html"  %}
 {% load static %}
+{% load tailwind_filters %}
 {% block title %} {{post.title}} {% endblock %}
 
 {% block content %}
 <section class="container mx-auto ">
     <div class="mx-40">  
         <form method="post">{% csrf_token %}
-            {{ form.as_p }}
+            {{ form|crispy}}
             <input type="submit" value="Save">
         </form>
         

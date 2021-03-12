@@ -19,6 +19,7 @@
             font-family: karla;
         }
     </style>
+    {% load tailwind_filters %}
 </head>
 <body class="bg-white font-family-karla h-screen class="antialiased">
 
@@ -35,7 +36,7 @@
     <p class="text-center text-3xl">Welcome.</p>
     <form class="flex flex-col pt-3 md:pt-8" action="{% url 'accounts:signup' %}" method="post">
       {% csrf_token %}
-      {{ form }}
+      {{ form|crispy}}
       <input type="submit" value="Sign up" class="bg-black text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8">
     </form>
     <div class="text-center pt-12 pb-12">

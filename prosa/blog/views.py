@@ -1,6 +1,6 @@
 from django.shortcuts import render,get_object_or_404,redirect
-from .models import Posts
-from .forms import PostForm
+from .models import Posts,Comment
+from .forms import PostForm,CommentForm
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -16,9 +16,11 @@ def about(request):
 
 def post_detail(request,slug):
     post=get_object_or_404(Posts,slug=slug,status='published')
+    comments=post.comments.filter(status=True)
     return render(request,'blog/post_detail.html',{'post':post})
-
-
+###############################################################################    
+#crud section
+###############################################################################
 @login_required(login_url="/accounts/login/")
 def post_create(request):
     if request.method == 'POST':
@@ -54,8 +56,6 @@ def post_edit(request, slug):
     return render(request, 'blog/post_edit.html', context)
 
 
-
-
 @login_required(login_url="/accounts/login/")
 def post_delete(request, slug):
     post = get_object_or_404(Posts, slug=slug)
@@ -70,3 +70,8 @@ def post_delete(request, slug):
     }
 
     return render(request, 'blog/post_confirm_delete.html',context)
+
+
+###############################################################################    
+#comment section
+###############################################################################

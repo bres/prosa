@@ -19,6 +19,7 @@
             font-family: karla;
         }
     </style>
+    {% load tailwind_filters %}
 </head>
 <body class="bg-white font-family-karla h-screen class="antialiased">
 
@@ -38,7 +39,7 @@
                 <form class="flex flex-col pt-3 md:pt-8" action="{% url 'accounts:login' %}" method="post">
                 {% csrf_token %}
 
-                    {{ form }}
+                    {{ form|crispy}}
                     {% if request.GET.next %}
                     <input type="hidden" name="next" value="{{ request.GET.next }}">
                     {% endif %}
