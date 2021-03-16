@@ -39,7 +39,7 @@ class Comment(models.Model):
     email=models.EmailField()
     content=models.TextField(max_length=5000)
     publish=models.DateTimeField(auto_now_add=True)
-    status=models.BooleanField(default=False)
+    status=models.BooleanField(default=True)
 
 
     class Meta:
@@ -47,6 +47,3 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"Comment by {self.name}"
-
-
-

@@ -1,6 +1,6 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from .models import Posts,Comment
-from .forms import PostForm,CommentForm
+from .forms import PostForm,NewCommentForm
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -17,8 +17,28 @@ def about(request):
 def post_detail(request,slug):
     post=get_object_or_404(Posts,slug=slug,status='published')
     comments=post.comments.filter(status=True)
-    return render(request,'blog/post_detail.html',{'post':post})
-###############################################################################    
+
+    user_comment=None
+
+    if request.method =='POST':
+        comment_form=NewCommentForm(request.POST)
+        if comment_form.is_valid():
+            user_comment=comment_form.save(commit=False)
+            user_comment.post=post
+            user_comment.save()
+            return redirect('blog:post_detail',slug=post.slug)
+    else:
+        comment_form=NewCommentForm()
+    return render(request,'blog/post_detail.html',
+    {
+    'post':post,
+    'comments':user_comment,
+    'comments':comments,
+    'comment_form':comment_form
+    }
+    )
+
+###############################################################################
 #crud section
 ###############################################################################
 @login_required(login_url="/accounts/login/")
@@ -72,6 +92,6 @@ def post_delete(request, slug):
     return render(request, 'blog/post_confirm_delete.html',context)
 
 
-###############################################################################    
+###############################################################################
 #comment section
 ###############################################################################

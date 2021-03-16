@@ -1,75 +1,82 @@
 {% extends "blog/base.html"  %}
 {% load static %}
+{% load tailwind_filters %}
+
 {% block title %} {{post.title}} {% endblock %}
 
 {% block content %}
 
 
 <!-- header section -->
-<section class=" container mx-auto">
-<div class="  mx-4 lg:mx-40 bg-gray-900 h-56">
- <p class="text-white text-5xl mx-20 text-center py-20 antialiased">
-{{post.title}}</p>
- </div>
-</section>
-
 <section class="container mx-auto">
-<div class="flex flex-col lg:flex-row  mx-4 lg:mx-40 mt-12">
-<div class="lg:w-3/4 bg-gray-200">
-    <p class="text-lg text-gray-400 ">
-    <span class="text-black">Νεότερα</span>
-    <span class="font-medium">/</span>
-    <span class="">Παλαιότερα</span>
-    <span class="font-medium">/</span>
-    <span class="">Δημοφιλέστερα</span>
-    </p>
-    <!-- component -->
-    <div class=" mx-auto mt-20 mb-10 pr-8 bg-yellow-200">
-    <div class="flex justify-between items-center bg-green-200 ">
-
-    <span class="text-xl text-black"> {{post.title}} </span>
-        {% if request.user == post.author %}
+    <div class="mx-4 lg:mx-40 bg-gray-900 h-56">
+        <p class="text-white text-5xl mx-20 text-center py-20 antialiased">{{post.title}}</p>
+    </div>
+    <div class="flex flex-col lg:flex-row  mx-4 lg:mx-40 mt-12">
+    <div class="lg:w-3/4">
+        <p class="text-lg text-gray-500 ">
+        <span class="text-gray-700 ">Νεότερα</span>
+        <span class="font-medium">/</span>
+        <span class="">Παλαιότερα</span>
+        <span class="font-medium">/</span>
+        <span class="">Δημοφιλέστερα</span>
+        </p>
+        <!-- post component -->
+        <div class="mx-auto mt-8 pr-8 ">
+            <div class="flex justify-between items-center">
+            <span class="text-3xl text-black"> {{post.title}}</span>
+            {% if request.user == post.author %}
             <ul class="flex justify-between items-center bg-red-200">
                 <li class="text-sm text-red-500 ml-4 hover:text-gray-800 font-mono">
-                    <a href="{% url 'blog:post_edit' post.slug %}">edit</a>
+                <a href="{% url 'blog:post_edit' post.slug %}">edit</a>
                 </li>
                 <span class="text-black mx-2"> </span>
                 <li class="text-sm text-red-500  hover:text-gray-800 font-mono">
-                    <a href="{% url 'blog:post_delete' post.slug %}">delete</a>
-                </li> 
+                <a href="{% url 'blog:post_delete' post.slug %}">delete</a>
+                </li>
             </ul>
-        {% endif %}
+            {% endif %}
+            </div>
+            <p class="text-gray-500 my-3">Written by <span class="text-gray-800 cursor-pointer hover:underline ">{{ post.author }}</span> on {{ post.publish_date }}</p>
+            <p class="text-gray-700 text-justify tracking-wider mb-6 leading-loose">{{ post.content }}</p>
+            <hr>
+        </div>
+        <!-- comment component -->
+        <div class="pr-8 pt-4"> 
+            {% with comments.count as total_comments %}
+            <p class="text-gray-700 font-semibold">
+            {{total_comments}} comment{{ total_comments|pluralize }}
+            </p>
+            {% endwith %}
+            {% for comment in comments %}
+            <p class="font-semibold text-gray-700 pt-5">{{ comment.name|upper }} <span class="font-normal">on</span> {{ comment.publish }}</p>
+            <p class="text-gray-700 text-justify tracking-wider leading-loose">{{ comment.content }}</p>
+            {% empty %}
+            <p>There are no comments for this post </p>
+            {% endfor %}
+            <hr class="my-6">
+        <!-- add component -->
+            <h2 class="text-gray-700 font-semibold pb-4 ">Add a new comment</h2>
+            <form method="POST">{% csrf_token %}
+                {{ comment_form|crispy}}
+                <input type="submit" class="bg-white text-gray-800 font-medium py-1 px-4 border border-gray-400 rounded-lg tracking-wide mr-1 hover:bg-gray-100" value="Post Comment">
+            </form>
+        </div>
     </div>
-
-    <p class="text-black  mb-3">Written by
-        <span class="text-black cursor-pointer hover:underline text-md">{{ post.author }}</span>
-        on
-    </p>
-    <p class="text-black  text-justify tracking-wider mb-6 leading-loose">{{ post.content }}</p>
+    <div class="lg:w-1/4 border-l-2 border-gray-200 px-4">
+        <div class="">
+            <h1 class="text-lg underline text-black ">Θεματολογία του μήνα</h1>
+            <p class="text-sm text-black mt-6">Για τον μήνα ------ η θεματολογία είναι Φαντασίας</p>
+        </div>
+        <div class="pt-6">
+            <h1 class="text-lg underline text-black mb-6">Οι δημοφιλέστερες αναρτήσεις</h1>
+            <ul class="text-sm text-black">
+                <li>ΑΥΓΟΥΣΤΟΣ 2020</li>
+                <li>ΣΕΠΤΕΜΒΡΙΟΣ 2020</li>
+                <li>ΟΚΤΩΜΒΡΙΟΣ 2020</li>
+            </ul>
+        </div>
     </div>
- </div>
-
-
-<div class="lg:w-1/4 border-l-2 border-gray-200 px-4">
-    <div class="">
-    <h1 class="text-lg underline text-black ">Θεματολογία του μήνα</h1>
-    <p class="text-sm text-black mt-6">Για τον μήνα ------ η θεματολογία είναι Φαντασίας</p>
-    </div>
-    <div class="pt-6">
-    <h1 class="text-lg underline text-black mb-6">Οι δημοφιλέστερες αναρτήσεις</h1>
-    <ul class="text-sm text-black">
-    <li>ΑΥΓΟΥΣΤΟΣ 2020</li>
-    <li>ΣΕΠΤΕΜΒΡΙΟΣ 2020</li>
-    <li>ΟΚΤΩΜΒΡΙΟΣ 2020</li>
-    </ul>
-    </div>
-</div>
-</div>
-
 </section>
-
-
-
-
 
 {% endblock %}
